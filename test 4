@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class PrimeNumberPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Enter the number of prime numbers to print after the nth prime: ");
+        int numToPrint = scanner.nextInt();
+
+        int count = 0;
+        int num = 2;
+        while (true) {
+            if (isPrime(num)) {
+                count++;
+                if (count == n) {
+                    break;
+                }
+            }
+            num++;
+        }
+
+        System.out.println("The " + n + "th prime number is: " + num);
+
+        for (int i = 0; i < numToPrint; i++) {
+            num++;
+            while (!isPrime(num)) {
+                num++;
+            }
+            System.out.println("Prime number " + (i + 1) + " after the " + n + "th prime: " + num);
+        }
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+2. import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of days: ");
+        int totalDays = scanner.nextInt();
+
+        int years = totalDays / 365;
+        int remainingDays = totalDays % 365;
+        int weeks = remainingDays / 7;
+        int days = remainingDays % 7;
+
+        System.out.println(totalDays + " days is equal to:");
+        System.out.println(years + " years, " + weeks + " weeks, and " + days + " days.");
+    }
+}
+3.public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a number: ");
+        int num = scanner.nextInt();
+        System.out.println("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        int count = 0;
+        int[] factors = new int[num];
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                factors[count] = i;
+                count++;
+            }
+        }
+
+        System.out.println("Number of factors: " + count);
+
+        if (n <= count) {
+            System.out.println("The " + n + "th factor is: " + factors[n - 1]);
+        } else {
+            System.out.println("The number " + n + " is out of range.");
+        }
+    }
+}
